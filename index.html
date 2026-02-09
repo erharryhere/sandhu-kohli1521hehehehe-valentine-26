@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: #ffd6e5;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Floating photos */
+  .bg-photo {
+    position: absolute;
+    width: 120px;
+    border-radius: 14px;
+    animation: floatPhoto linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes floatPhoto {
+    from {
+      transform: translateY(110vh);
+    }
+    to {
+      transform: translateY(-150px);
+    }
+  }
+
+  /* Main card */
+  .card {
+    position: relative;
+    background: white;
+    padding: 40px 50px;
+    border-radius: 24px;
+    text-align: center;
+    z-index: 2;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  }
+
+  h1 {
+    color: #ff4d6d;
+    margin-bottom: 10px;
+    font-size: 36px;
+    font-weight: 800;
+  }
+
+  h2 {
+    margin-bottom: 30px;
+    font-size: 26px;
+  }
+
+  button {
+    padding: 14px 30px;
+    border-radius: 30px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 10px;
+  }
+
+  .yes {
+    background: #ff4d6d;
+    color: white;
+  }
+
+  .no {
+    background: #ddd;
+  }
+
+  /* Sad overlay */
+  .sad-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+  }
+
+  .sad-overlay img {
+    width: 300px;
+    border-radius: 20px;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- Floating photos -->
+<script>
+  const totalPhotos = 15;
+  for (let i = 1; i <= totalPhotos; i++) {
+    const img = document.createElement("img");
+    img.src = `photos/${i}.jpg`;
+    img.className = "bg-photo";
+    img.style.left = Math.random() * 100 + "vw";
+    img.style.animationDuration = (10 + Math.random() * 10) + "s";
+    img.style.animationDelay = Math.random() * 10 + "s";
+    document.body.appendChild(img);
+  }
+</script>
+
+<!-- Main card -->
+<div class="card">
+  <h1>My Favourite Headache 💗</h1>
+  <h2>Will you be my Valentine?</h2>
+
+  <button class="yes" onclick="goYes()">YES</button>
+  <button class="no" onclick="goNo()">NO</button>
+</div>
+
+<!-- Sad screen -->
+<div class="sad-overlay" id="sad">
+  <img src="sad.jpg">
+</div>
+
+<audio id="womp" src="womp.mp3"></audio>
+
+<script>
+  function goYes() {
+    // next page placeholder
+    window.location.href = "date.html";
+  }
+
+  function goNo() {
+    document.getElementById("sad").style.display = "flex";
+    document.getElementById("womp").play();
+  }
+</script>
+
+</body>
+</html>

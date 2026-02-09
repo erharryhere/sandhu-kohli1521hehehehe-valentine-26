@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Date Night 💕</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #ffc0cb;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      z-index: 2;
+    }
+
+    h1 {
+      color: hotpink;
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      background: white;
+      color: hotpink;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    /* RIGHT ANSWER POPUP */
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 192, 203, 0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 5;
+    }
+
+    .popup img {
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .right-text {
+      margin-top: 20px;
+      font-size: 2rem;
+      color: hotpink;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Our Date Should Be… 💖</h1>
+
+    <div class="buttons">
+      <button onclick="wrongAnswer()">🎬 Movie Night</button>
+      <button onclick="wrongAnswer()">🍝 Cook Together</button>
+      <button onclick="rightAnswer()">✨ Both</button>
+    </div>
+  </div>
+
+  <!-- RIGHT ANSWER IMAGE -->
+  <div class="popup" id="popup">
+    <img src="right.jpg" alt="Perfect choice">
+    <div class="right-text">Perfect Choice 💕</div>
+  </div>
+
+  <!-- SOUNDS -->
+  <audio id="wrongSound" src="wrong.mp3"></audio>
+  <audio id="rightSound" src="right.mp3"></audio>
+
+  <script>
+    function wrongAnswer() {
+      document.getElementById("wrongSound").play();
+    }
+
+    function rightAnswer() {
+      document.getElementById("rightSound").play();
+
+      const popup = document.getElementById("popup");
+      popup.style.display = "flex";
+
+      // Go to final page after 4 seconds
+      setTimeout(() => {
+        window.location.href = "last.html";
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>

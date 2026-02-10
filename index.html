@@ -100,7 +100,7 @@
   const totalPhotos = 15;
   for (let i = 1; i <= totalPhotos; i++) {
     const img = document.createElement("img");
-    img.src = `photos/${i}.jpg`;
+    img.src = `${i}.jpg`;
     img.className = "bg-photo";
     img.style.left = Math.random() * 100 + "vw";
     img.style.animationDuration = (10 + Math.random() * 10) + "s";
@@ -139,3 +139,4 @@
 
 </body>
 </html>
+
